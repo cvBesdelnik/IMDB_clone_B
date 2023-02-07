@@ -3,7 +3,13 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    @movies = Movie.all
+    # previous code
+    # @movies = Movie.all
+
+    @movies = Movie.joins(:category).select(:id, :movie_title, :text, :rating, :category_name)
+    # also work
+    # @movies = Movie.joins(:category).select('movies.movie_title, movies.text, movies.rating, categories.category_name')
+    
   end
 
   # GET /movies/1 or /movies/1.json

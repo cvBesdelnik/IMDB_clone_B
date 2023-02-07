@@ -3,12 +3,25 @@
 <h1>Movies</h1>
 
 <div id="movies">
+<ol>
   <% @movies.each do |movie| %>
-    <%= render movie %>
+    <li><strong>Title:</strong> <%= movie.movie_title%>,<br>
+     <strong>Text:</strong> <%= movie.text%>,<br>
+     <strong>Category:</strong> <%= movie.category_name%>,<br>
+     <strong>Rating:</strong> <%= movie.rating%><br>
+     <%# тут проблема не знаю як зробити лінк на конкретний фільм в параметрах через кет воно посилає назву фільму а не id %>
+     <%# Eror %>
+     <%# No route matches {:action=>"show", :controller=>"movies"}, missing required keys: [:id]
+Did you mean?  movie_url %>
+     <%= link_to "Show this movie", movie[:id] %>
+     </li>
     <p>
-      <%= link_to "Show this movie", movie %>
+      
     </p>
   <% end %>
+  </ol>
 </div>
 
 <%= link_to "New movie", new_movie_path %>
+
+
