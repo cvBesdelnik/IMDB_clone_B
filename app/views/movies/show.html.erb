@@ -1,6 +1,5 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @movie %>
 
 <div>
   <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
@@ -8,3 +7,20 @@
 
   <%= button_to "Destroy this movie", @movie, method: :delete %>
 </div>
+
+
+<div id="movies">
+<ol>
+  
+  
+    <strong>Title:</strong> <%= @movie.movie_title%>,<br>
+     <strong>Text:</strong> <%= @movie.text%>,<br>
+     <strong>Category:</strong> <%= @movie.category_name%>,<br>
+     <strong>Rating:</strong> <%= @movie.rating%><br>
+     
+     
+   
+  
+  </ol>
+</div>
+

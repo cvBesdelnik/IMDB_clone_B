@@ -3,22 +3,23 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    # previous code
-    # @movies = Movie.all
+     @movies = Movie.joins(:category).select(:id, :movie_title, :text, :rating, :category_name)
+     @categories = Category.all   
 
-    @movies = Movie.joins(:category).select(:id, :movie_title, :text, :rating, :category_name)
     # also work
     # @movies = Movie.joins(:category).select('movies.movie_title, movies.text, movies.rating, categories.category_name')
-    
   end
 
   # GET /movies/1 or /movies/1.json
   def show
+    @movie = Movie.joins(:category).select(:id, :movie_title, :text, :rating, :category_name).find(params[:id])
+    # @movie = Movie.find_by(id: params[:id])
+    p (params)
   end
 
   # GET /movies/new
   def new
-    @movie = Movie.new
+     @movie = Movie.new
   end
 
   # GET /movies/1/edit
@@ -71,6 +72,6 @@ class MoviesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.require(:movie).permit(:movie_title, :text, :rating, :category_id)
+      params.require(:movie).permit(:id, :movie_title, :text, :rating, :category_id)
     end
 end
