@@ -4,8 +4,8 @@ class ReportsController < ApplicationController
     .select(:id, :movie_title, :text, :rating, :category_name)
     .where(category_id: params[:category][:id])
   
-    # p ("!!!!!!!!!!!!!!!!!!!" + params.to_s)
-
-    
+    p ("!!!!!!!!!!!!!!!!!!!" + params.to_s)  
   end
+
+ 
 end

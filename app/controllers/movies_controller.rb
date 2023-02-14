@@ -3,9 +3,11 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-     @movies = Movie.joins(:category).select(:id, :movie_title, :text, :rating, :category_name)
+     @movies = Movie.joins(:category)
+        .select(:id, :movie_title, :text, :rating, :category_name)
+        .paginate(page: params[:page], per_page: 4)
      @categories = Category.all   
-
+    
     # also work
     # @movies = Movie.joins(:category).select('movies.movie_title, movies.text, movies.rating, categories.category_name')
   end
@@ -13,8 +15,11 @@ class MoviesController < ApplicationController
   # GET /movies/1 or /movies/1.json
   def show
     @movie = Movie.joins(:category).select(:id, :movie_title, :text, :rating, :category_name).find(params[:id])
-    # @movie = Movie.find_by(id: params[:id])
-    p (params)
+ 
+    @average_rating = Rating.where(movie_id: params[:id]).average(:rating)
+    @average_rating == nil ? @average_rating : @average_rating.round(2)
+    
+   
   end
 
   # GET /movies/new

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'ratings/create'
   get '/movies/new', to: 'movies#new'
   get 'reports/filtr_by_category'
   get '/movies/:id', to: 'movies#show'

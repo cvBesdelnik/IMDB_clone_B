@@ -73,4 +73,12 @@ group :test do
   gem "webdrivers"
 end
 
+# Pagination gem [https://github.com/mislav/will_paginate]
+gem 'will_paginate', '~> 3.3'
+# [https://github.com/bootstrap-ruby/will_paginate-bootstrap]
+gem 'will_paginate-bootstrap'
 
+
+gem "cssbundling-rails", "~> 1.1"
+
+gem "jsbundling-rails", "~> 1.1"
