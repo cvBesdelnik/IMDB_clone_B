@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
     @movie = Movie.joins(:category).select(:id, :movie_title, :text, :rating, :category_name).find(params[:id])
  
     @average_rating = Rating.where(movie_id: params[:id]).average(:rating)
-    @average_rating == nil ? @average_rating : @average_rating.round(2)
+    @average_rating == nil ? @average_rating = "No one voted for rating" : @average_rating.round(2)
     
    
   end
